@@ -20,8 +20,8 @@ export class LambdaSampleStack extends cdk.Stack {
       handler: 'handler',
       runtime: lambda.Runtime.NODEJS_LATEST,
       bundling: {
-        minify: true,
-        sourceMap: false,
+        minify: false,
+        sourceMap: true,
       },
     });
     const smoketestLambda = new NodejsFunction(this, 'smoketestLambda', {
@@ -29,8 +29,8 @@ export class LambdaSampleStack extends cdk.Stack {
       handler: 'handler',
       runtime: lambda.Runtime.NODEJS_LATEST,
       bundling: {
-        minify: true,
-        sourceMap: false,
+        minify: false,
+        sourceMap: true,
       },
     });
   }
