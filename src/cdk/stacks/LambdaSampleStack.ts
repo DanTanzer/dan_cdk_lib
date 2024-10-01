@@ -31,8 +31,11 @@ export class LambdaSampleStack extends cdk.Stack {
       retention: RetentionDays.ONE_DAY
     });
 
+    const type = true ? 'success' : 'failure';
+    // const type = false ? 'success' : 'failure';
+    
     const simpleLambda = new NodejsFunction(this, `simpleLambda${uniqueId}`, {
-      entry: path.join(__dirname, '../../lambda/simple/index.ts'),
+      entry: path.join(__dirname, `../../lambda/simple/${type}Lambda.ts`),
       handler: 'handler',
       functionName: `simple-lambda${uniqueId}`,
       runtime: lambda.Runtime.NODEJS_LATEST,
