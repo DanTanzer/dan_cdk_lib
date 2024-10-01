@@ -3,10 +3,16 @@
 	"image": "mcr.microsoft.com/devcontainers/base:bookworm",
 	"customizations": {
 		"vscode": {
-			"extensions": [
-				"amazonwebservices.aws-toolkit-vscode"
-			]
-		}
+			"settings": {
+				"terminal.integrated.shell.osx": "/bin/zsh",
+				"editor.fontSize": 14,
+				"editor.tabSize": 2,
+				"files.autoSave": "onFocusChange"
+			}
+		},
+		"extensions": [
+			"amazonwebservices.aws-toolkit-vscode"
+		]
 	},
 	// 👇 Features to add to the Dev Container. More info: https://containers.dev/implementors/features.
 	"features": {
@@ -21,16 +27,14 @@
 		"ghcr.io/devcontainers/features/github-cli:1": {},
 		"aws-cli": "latest"
 	},
-
 	// 👇 Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// 👇 Configure tool-specific properties.
 	// "customizations": {},
-
 	// 👇 Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	"remoteUser": "vscode",
-    "mounts": [
-		"source=${localEnv:HOME}/.aws,target=/root/.aws,type=bind,consistency=cached"
+	"mounts": [
+		"source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached"
 	]
+	,"postCreateCommand": "chmod +x .devcontainer/postCreateCommand.sh && .devcontainer/postCreateCommand.sh"
 }
