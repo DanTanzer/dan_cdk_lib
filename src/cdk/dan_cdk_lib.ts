@@ -8,7 +8,7 @@ const app = new cdk.App();
 
 // define the stack name and version number
 // this will help with unique naming of the stack
-const version = "1";
+const version = "2";
 const stackName = `LambdaSampleStack${version}`;
 
 const uniqueId = createUniqueId(stackName);
